@@ -20,7 +20,7 @@ Docker 20.10.6
 
 1. 安裝 Helm
 
-```sh
+```shell
 $ curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
 
 $ helm version
@@ -28,7 +28,7 @@ $ helm version
 
 2. 添加 Ingress-Nginx 的 Helm repo (倉庫)
 
-```sh
+```shell
 # 添加倉庫來源 : https://kubernetes.github.io/ingress-nginx
 $ helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
 
@@ -41,7 +41,7 @@ $ helm repo list
 
 3. 查看 Helm Chart 的 values.yaml 檔案 (參數設定參考)
 
-```sh
+```shell
 $ helm show values ingress-nginx/ingress-nginx > values.yaml
 
 $ cat values.yaml
@@ -49,7 +49,7 @@ $ cat values.yaml
 
 values.yaml
 
-```
+```yaml
 ## nginx configuration
 ## Ref: https://github.com/kubernetes/ingress-nginx/blob/master/docs/user-guide/nginx-configuration/index.md
 ##
@@ -850,7 +850,7 @@ dhParam:
 
 4. 安裝 ingress-nginx (將 `192.168.0.101` 替換為自己的Master IP)
 
-```sh
+```shell
 # 使用 Helm 安裝 ingress-nginx 
 $ helm install my-ingress-nginx ingress-nginx/ingress-nginx \
   --set "controller.service.externalIPs=192.168.0.101"
@@ -863,7 +863,7 @@ $ helm list
 
 5. 驗證 ingress-nginx 安裝是否成功
 
-```sh
+```shell
 $ kubectl get all
 
 NAME                                              READY   STATUS    RESTARTS   AGE
@@ -898,7 +898,7 @@ replicaset.apps/my-ingress-nginx-controller-fc6bb7878   1         1         1   
 
 1. 建立工作區
 
-```sh
+```shell
 $ mkdir gomyapi
 $ cd gomyapi
 ```
@@ -988,14 +988,14 @@ ENTRYPOINT ["/app/gomyapi"]
 
 Build Docker image
 
-```sh
+```shell
 # 請修改 -t 後方名稱
 $ docker build -t [Your DockerHub username]/gomyapi .
 ```
 
 建置完成後，可以透過 Docker 在本地運行測試
 
-```sh
+```shell
 # 啟動 docker container, 並且監聽 8080 port
 $ docker run -itd \
 --rm \
@@ -1015,7 +1015,7 @@ $ docker stop gomyapi
 
 Push Docker Image
 
-```sh 
+```shell 
 $ docker push [Youd DockerHub username]/gomyapi
 ```
 
@@ -1025,14 +1025,14 @@ $ docker push [Youd DockerHub username]/gomyapi
 
 建立工作區
 
-```sh
+```shell
 $ mkdir ~/k8s-gowebapi
 $ cd ~/k8s-gowebapi
 ```
 
 撰寫 YAML 檔案
 
-```sh
+```shell
 $ nano deplyment.yaml
 $ nano services.yaml
 ```
@@ -1076,7 +1076,7 @@ spec:
 ```
 
 部屬至 K8S
-```sh
+```shell
 $ kubectl apply -f .
 
 $ kubectl get pod 
@@ -1089,7 +1089,7 @@ $ kubectl get services
 
 撰寫 ingress.yaml
 
-```sh
+```shell
 $ nano ingress.yaml
 ```
 
@@ -1114,7 +1114,7 @@ spec:
 
 將 ingress 設定發佈至 K8S
 
-```sh
+```shell
 $ kubectl apply -f .
 ```
 
@@ -1148,7 +1148,7 @@ spec:
 
 重新發佈
 
-```sh
+```shell
 $ kubectl apply -f .
 ```
 
