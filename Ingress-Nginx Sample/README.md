@@ -1021,6 +1021,8 @@ $ docker push [Youd DockerHub username]/gomyapi
 
 ## 將 Web API 服務發佈至 K8S 中
 
+【註】可以將 image 替換為已經事先發佈好的 [nantou/gomypai](https://hub.docker.com/repository/docker/nantou/gomyapi)
+
 建立工作區
 
 ```sh
