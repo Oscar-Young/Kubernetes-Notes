@@ -853,7 +853,7 @@ dhParam:
 ```shell
 # 使用 Helm 安裝 ingress-nginx 
 $ helm install my-ingress-nginx ingress-nginx/ingress-nginx \
-  --set "controller.service.externalIPs=192.168.0.101"
+  --set "controller.service.externalIPs={192.168.0.101}"
 
 # 查看已經安裝的 Helm Chart
 $ helm list
